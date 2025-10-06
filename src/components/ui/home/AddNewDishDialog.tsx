@@ -1,0 +1,93 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { DishType } from "@/types";
+import { useState } from "react";
+export function AddNewDishDialog() {
+  //   const [newDish, setNewDish] = useState<DishType>();
+  //   const [dishName, setDishName] = useState("");
+
+  return (
+    <>
+      <Dialog>
+        <form>
+          <DialogTrigger asChild>
+            <div className="w-[270px] h-[241px] rounded-[20px] border-[1px] border-dashed border-red-700 p-3 flex justify-center items-center flex-col gap-6">
+              <img src="AddNewDishPic.png" alt="" className="w-10 h-10" />
+              <div>
+                <p>Add new Dish to </p>
+                <p>name</p>
+              </div>
+            </div>
+          </DialogTrigger>
+          <DialogContent className="w-auto h-auto">
+            <DialogHeader>
+              <DialogTitle className="text/text-foreground">
+                Add new Dish to Appetizers
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex flex-col gap-[24px]">
+              <div className="flex items-center gap-6 mt-6">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="food-name-1">Food name</Label>
+                  <Input
+                    className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3"
+                    placeholder="Type food name"
+                    name="name"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="food-price">Food price</Label>
+                  <Input
+                    // value={dishName}
+                    className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3  "
+                    placeholder="Enter price..."
+                    name="username"
+                  />
+                </div>
+              </div>
+              <>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="Ingredients">Ingredients</Label>
+                  <Input
+                    className="w-[412px] h-[90px] rounded-md border-[1px] flex py-2 px-3"
+                    placeholder="List ingredients..."
+                    name="username"
+                  />
+                </div>
+              </>
+              <div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="Ingredients">Ingredients</Label>
+                  <div className="bg-[#2563EB0D] border-[1px] border-[#2563EB0D] border-dashed w-[412px] h-[160px] flex flex-col gap-2 justify-center items-center">
+                    <img src="AddNewDishDialogPic.png" alt="" />
+                    <p className="text-text/text-primary">
+                      Choose a file or drag & drop it here
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <DialogFooter>
+              <div className="h-[68px] flex justify-end items-end">
+                <Button type="submit" className="flex py-3 px-4">
+                  Add Dish
+                </Button>
+              </div>
+            </DialogFooter>
+          </DialogContent>
+        </form>
+      </Dialog>
+    </>
+  );
+}
