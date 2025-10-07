@@ -11,10 +11,47 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DishType } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
+
 export function AddNewDishDialog() {
-  //   const [newDish, setNewDish] = useState<DishType>();
   //   const [dishName, setDishName] = useState("");
+  const [preview, setPreview] = useState("");
+  const [newDish, setNewDish] = useState<DishType>();
+  const [task, setTask] = useState<
+    {
+      id: number;
+      name: string;
+      price: string;
+      ingredients: string;
+      url: string;
+    }[]
+  >([]);
+
+  function CreateNeDish() {
+    fetch("http://localhost:4000/"),
+      {
+        method: "POST",
+        headers: { "Contest-Type": "application/json" },
+      };
+  }
+
+  useEffect(() => {
+    fetch("http://localhost:4000/")
+      .then((res) => {
+        res.json;
+      })
+      .then((data) => {
+        data;
+      });
+  }, []);
+
+  function handleAddNewDishImageChange(e: any) {
+    const files = e.target.files[0];
+    const file = URL.createObjectURL(files);
+    setPreview(file);
+    console.log("PREVIEW", preview);
+  }
 
   return (
     <>
@@ -48,7 +85,6 @@ export function AddNewDishDialog() {
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="food-price">Food price</Label>
                   <Input
-                    // value={dishName}
                     className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3  "
                     placeholder="Enter price..."
                     name="username"
@@ -58,21 +94,35 @@ export function AddNewDishDialog() {
               <>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="Ingredients">Ingredients</Label>
-                  <Input
-                    className="w-[412px] h-[90px] rounded-md border-[1px] flex py-2 px-3"
+                  <Textarea
                     placeholder="List ingredients..."
-                    name="username"
+                    className="w-[412px] h-[90px] rounded-md border-[1px] flex py-2 px-3"
                   />
                 </div>
               </>
               <div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="Ingredients">Ingredients</Label>
-                  <div className="bg-[#2563EB0D] border-[1px] border-[#2563EB0D] border-dashed w-[412px] h-[160px] flex flex-col gap-2 justify-center items-center">
+                  <div className="bg-[#2563EB0D] border-[1px] border-[#2563EB0D] border-dashed  w-[412px] h-[160px] flex flex-col gap-2 justify-center items-center relative mt-5">
                     <img src="AddNewDishDialogPic.png" alt="" />
                     <p className="text-text/text-primary">
                       Choose a file or drag & drop it here
                     </p>
+                    {preview ? (
+                      <>
+                        <img
+                          src={preview}
+                          className=" absolute w-[412px]  h-[160px] rounded-md"
+                        />
+                        <button>X</button>
+                      </>
+                    ) : (
+                      <input
+                        type="file"
+                        className="absolute opacity-0 inset-0"
+                        onChange={handleAddNewDishImageChange}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
