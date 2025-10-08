@@ -18,21 +18,28 @@ export function AddNewDishDialog() {
   //   const [dishName, setDishName] = useState("")
   const [preview, setPreview] = useState(``);
   const [newDish, setNewDish] = useState();
-  const [Dish, setDish] = useState();
+  const [newDishName, setNewDishName] = useState(``);
+  const [dish, setDish] = useState<
+    {
+      id: string;
+      name: string;
+      price: string;
+      ingredients: string;
+      url: string;
+    }[]
+  >([]);
 
-  function CreateNeDish() {
-    fetch("http://localhost:4000/"),
-      {
-        method: "POST",
-        headers: { "Contest-Type": "application/json" },
-      };
+  async function createNewDish() {
+    await fetch(`http://localhost:3001`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: newDish }),
+    });
+    loadDishes;
   }
-
-  // useEffect(() => {
-  //   fetch("http://localhost:4000/AddNEwDish")
-  //     .then((res) => res.json)
-  //     .then((data) => setDish(data));
-  // }, []);
+  function loadDishes() {}
 
   function handleAddNewDishImageChange(e: any) {
     const files = e.target.files[0];
@@ -40,6 +47,13 @@ export function AddNewDishDialog() {
     setPreview(file);
     console.log("PREVIEW", preview);
   }
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/`)
+      .then((res) => res.json())
+      .then((data) => setDish(data));
+    console.log("DATAaaaa", dish);
+  }, []);
 
   return (
     <>
@@ -65,6 +79,10 @@ export function AddNewDishDialog() {
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="food-name-1">Food name</Label>
                   <Input
+                    value={newDishName}
+                    onChange={(e) => {
+                      setNewDishName(e.target.value);
+                    }}
                     className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3"
                     placeholder="Type food name"
                     name="name"
@@ -102,7 +120,6 @@ export function AddNewDishDialog() {
                           src={preview}
                           className=" absolute w-[412px]  h-[160px] rounded-md"
                         />
-                        <button>X</button>
                       </>
                     ) : (
                       <input
@@ -118,7 +135,11 @@ export function AddNewDishDialog() {
 
             <DialogFooter>
               <div className="h-[68px] flex justify-end items-end">
-                <Button type="submit" className="flex py-3 px-4">
+                <Button
+                  onClick={createNewDish}
+                  type="submit"
+                  className="flex py-3 px-4"
+                >
                   Add Dish
                 </Button>
               </div>

@@ -1,6 +1,6 @@
 export type DishType = [
   {
-    id: number;
+    id: string;
     name: string;
     price: string;
     ingredients: string;
