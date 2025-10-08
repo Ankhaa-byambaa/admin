@@ -15,18 +15,10 @@ import { useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 
 export function AddNewDishDialog() {
-  //   const [dishName, setDishName] = useState("");
-  const [preview, setPreview] = useState("");
-  const [newDish, setNewDish] = useState<DishType>();
-  const [task, setTask] = useState<
-    {
-      id: number;
-      name: string;
-      price: string;
-      ingredients: string;
-      url: string;
-    }[]
-  >([]);
+  //   const [dishName, setDishName] = useState("")
+  const [preview, setPreview] = useState(``);
+  const [newDish, setNewDish] = useState();
+  const [Dish, setDish] = useState();
 
   function CreateNeDish() {
     fetch("http://localhost:4000/"),
@@ -36,15 +28,11 @@ export function AddNewDishDialog() {
       };
   }
 
-  useEffect(() => {
-    fetch("http://localhost:4000/")
-      .then((res) => {
-        res.json;
-      })
-      .then((data) => {
-        data;
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/AddNEwDish")
+  //     .then((res) => res.json)
+  //     .then((data) => setDish(data));
+  // }, []);
 
   function handleAddNewDishImageChange(e: any) {
     const files = e.target.files[0];
