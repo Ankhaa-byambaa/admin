@@ -7,6 +7,7 @@ type DishCardProps = {
   url: any;
   price: string;
 };
+
 export function DishCard({ name, descrription, url, price }: DishCardProps) {
   return (
     <>
