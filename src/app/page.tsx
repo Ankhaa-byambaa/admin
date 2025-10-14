@@ -4,8 +4,10 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex gap-10 ">
-      <AddNewDishDialog />
-      <DishCardContainer />
+      <div className="background/bg-background w-screen h-[582px]">
+        <AddNewDishDialog />
+        <DishCardContainer />
+      </div>
     </div>
   );
 }

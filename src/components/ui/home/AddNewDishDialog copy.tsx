@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export function AddNewDishDialog() {
   //   const [dishName, setDishName] = useState("")
+  const [categories, setCategories] = useState(``);
   const [preview, setPreview] = useState(``);
   const [newDish, setNewDish] = useState();
   const [newDishName, setNewDishName] = useState(``);
@@ -29,7 +30,7 @@ export function AddNewDishDialog() {
   >([]);
 
   async function createNewDish() {
-    await fetch(`http://localhost:3001`, {
+    await fetch(`http://localhost:4000`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
