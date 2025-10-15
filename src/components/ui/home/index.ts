@@ -6,3 +6,4 @@ export * from "./AppSideBar";
 export * from "./Categories";
 export * from "./ContainerCategories";
 export * from "./AddNewDishDialog";
+export * from "./Layout";
