@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 export function ContainerCategories() {
   return (
-    <div className="w-screen h-50 flex flex-col gap-4 pt-10 bg-[#FFFFFF] border rounded-5">
+    <div className="w-screen flex pl-15 mt-20 h-50 flex flex-col gap-4 pt-10 bg-[#FFFFFF] border rounded-md">
       <span className="text-foreground text-5 font-bold">Dishes Category</span>
       <div className="flex gap-10 flex-wrap">
         <Badge

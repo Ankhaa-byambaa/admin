@@ -6,17 +6,17 @@ import {
 
 export function AppSidebar() {
   return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarContent className="h-screen w-auto background/bg-background pr-5 pl-10 py-10">
-          <div className="flex gap-2 justify-center items-center ">
+    <SidebarProvider className=" w-auto ml-20">
+      <Sidebar className="mx-0">
+        <SidebarContent className="h-screen w-auto bg-background  mx-0 pl-10 py-10">
+          <div className="flex gap-2  items-center ">
             <img className="w-9 h-8" src={"NomNomLogo.jpg"} />
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               <p className="text-[18px] font-bold text/text-foreground">
                 NomNom
               </p>
-              <span className=" text-3 text/text-muted-foreground">
+              <span className=" text-[12px] text/text-muted-foreground">
                 Swift delivery
               </span>
             </div>

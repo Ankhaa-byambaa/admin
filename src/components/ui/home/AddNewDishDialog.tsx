@@ -28,16 +28,6 @@ export function AddNewDishDialog() {
     }[]
   >([]);
 
-  async function createNewDish() {
-    await fetch(`http://localhost:3002`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: newDish }),
-    });
-    loadDishes;
-  }
   function loadDishes() {}
 
   function handleAddNewDishImageChange(e: any) {
@@ -46,13 +36,6 @@ export function AddNewDishDialog() {
     setPreview(file);
     console.log("PREVIEW", preview);
   }
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/`)
-      .then((res) => res.json())
-      .then((data) => setDish(data));
-    console.log("DATAaaaa", dish);
-  }, []);
 
   return (
     <>
@@ -135,7 +118,7 @@ export function AddNewDishDialog() {
             <DialogFooter>
               <div className="h-[68px] flex justify-end items-end">
                 <Button
-                  onClick={createNewDish}
+                  // onClick={createNewDish}
                   type="submit"
                   className="flex py-3 px-4"
                 >

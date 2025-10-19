@@ -1,13 +1,17 @@
+import { ReactNode } from "react";
 import { AppSidebar } from "./AppSideBar";
 import { ContainerCategories } from "./ContainerCategories";
 
-export function Layout() {
+export function Layout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <div>
       <div className="flex">
         <AppSidebar />
-        <ContainerCategories />
+        <div className="w-screen">
+          <ContainerCategories />
+          {children}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
