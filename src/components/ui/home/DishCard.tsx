@@ -16,7 +16,7 @@ export function DishCard({ name, descrription, url, price }: DishCardProps) {
           // onClick={""}
           className="absolute border rounded-full w-11 bg-background pb-2 px-4"
         >
-          <img src="editPenIcon.png" alt="" />
+          <img src={`${url}`} alt="" />
         </Button>
         <img
           className="w-60 h-30 border rounded-[20px] relative"
