@@ -10,25 +10,24 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 
 export function AddNewDishDialog() {
   //   const [dishName, setDishName] = useState("")
-  const [preview, setPreview] = useState(``);
-  const [newDish, setNewDish] = useState(``);
-  const [newDishName, setNewDishName] = useState(``);
-  const [dish, setDish] = useState<
-    {
-      id: string;
-      name: string;
-      price: string;
-      ingredients: string;
-      url: string;
-    }[]
-  >([]);
+  const [preview, setPreview] = useState<string>(``); // image
+  const [newDishPrice, setNewDishPrice] = useState<string>(``);
+  const [newDishName, setNewDishName] = useState<string>(``);
+  const [newDishIngredients, setNewDishIngredients] = useState<string>(``);
 
-  function loadDishes() {}
+  function handleOnChangePrice(e: ChangeEvent<HTMLInputElement>) {
+    setNewDishPrice(e.target.value);
+    console.log(setNewDishPrice);
+  }
+  function handleOnChangeIngredients(e: ChangeEvent<HTMLTextAreaElement>) {
+    setNewDishIngredients(e.target.value);
+    console.log(setNewDishPrice);
+  }
 
   function handleAddNewDishImageChange(e: any) {
     const files = e.target.files[0];
@@ -61,8 +60,9 @@ export function AddNewDishDialog() {
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="food-name-1">Food name</Label>
                   <Input
+                    defaultValue={newDishName}
                     value={newDishName}
-                    onChange={(e) => {
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setNewDishName(e.target.value);
                     }}
                     className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3"
@@ -76,6 +76,9 @@ export function AddNewDishDialog() {
                     className="w-[194px] h-[38px] rounded-md border-[1px] flex py-2 px-3  "
                     placeholder="Enter price..."
                     name="username"
+                    defaultValue={newDishPrice}
+                    value={newDishPrice}
+                    onChange={handleOnChangePrice}
                   />
                 </div>
               </div>
@@ -85,6 +88,9 @@ export function AddNewDishDialog() {
                   <Textarea
                     placeholder="List ingredients..."
                     className="w-[412px] h-[90px] rounded-md border-[1px] flex py-2 px-3"
+                    defaultValue={newDishIngredients}
+                    value={newDishIngredients}
+                    onChange={handleOnChangeIngredients}
                   />
                 </div>
               </>
