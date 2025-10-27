@@ -28,7 +28,9 @@ export function AddNewDishDialog() {
     setNewDishIngredients(e.target.value);
     console.log(setNewDishPrice);
   }
-
+  const AddNewDish = () => {
+    fetch(`http://localhost:8000/categorygit`);
+  };
   function handleAddNewDishImageChange(e: any) {
     const files = e.target.files[0];
     const file = URL.createObjectURL(files);
@@ -124,7 +126,7 @@ export function AddNewDishDialog() {
             <DialogFooter>
               <div className="h-[68px] flex justify-end items-end">
                 <Button
-                  // onClick={createNewDish}
+                  onClick={AddNewDish}
                   type="submit"
                   className="flex py-3 px-4"
                 >
